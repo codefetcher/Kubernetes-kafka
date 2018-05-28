@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: zookeeper
+  labels:
+    zone: prod
+    version: v1
+spec:
+  replicas: 1
+  selector:
+     app: zookeeper
+  template:
+     metadata:
+        labels:
+          app: zookeeper
+     spec:
+        containers:
+        - name: zookeeper
+          image: jplock/zookeeper
+          ports:
+          - containerPort: 2181
+
